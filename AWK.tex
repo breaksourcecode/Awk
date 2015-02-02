@@ -1,0 +1,65 @@
+\documentclass[10pt,fancyhdr,UTF-8]{ctexart}
+\setmainfont{Times New Roman}
+\setCJKmainfont{SimSun}
+\setCJKfamilyfont{song}{STSong}
+\newcommand\zh[1]{{\CJKfamily{song}#1}}
+%\usepackage[centering,paperwidth=180mm,paperheight=230mm,body={390pt,530pt},showframe]{geometry}
+\usepackage[centering,body={390pt,530pt},showframe]{geometry}
+%\usepackage[top=0in,bottom=10in,left=1.25in,right=1.25in]{geometry}
+\geometry{left=2.5cm,right=2.5cm,bottom=12.5cm,top=0cm}
+\usepackage[a4,center,frame,color=blue]{crop}
+\usepackage{indentfirst} %段缩进
+\setlength{\parindent}{2em}
+\usepackage{titlesec}
+\usepackage{CJK}
+%\usepackage{titling}
+%\pretitle{\begin{flushright}\large}
+\usepackage[flushleft]{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rfoot{\thepage}
+%\fancyhf{}
+%\fancyhead[RE]{\normalfont\small\rmfamily\nouppercase{\leftmark}}
+%\fancyhead[LO]{\normalfont\small\rmfamily\nouppercase{\rightmark}}
+%\fancyhead[LE,RO]{\thepage}
+%\fancyhead[LE,LO]{\small Book Title}
+\topmargin=0pt
+\oddsidemargin=0pt \evensidemargin=0pt
+\textwidth=14cm
+\textheight=21cm
+\title{AWK教程}
+\author{half-beast@163.com}
+\date{Jun. 1 , 2015}
+\begin{document}
+\maketitle
+\section{AWK教程}
+\indent Awk是一门方便其表达力丰富的编程语言，它适用于多变量计算和数据操作任务。本章是一个教程，目标是使你能够尽快的用awk写出属于自己的程序。第二章详细描述了语言的方方面面，而剩下的章节则向你展示awk习惯于解决许多领域的问题。整本书中，我们都试图挑选一些让你感觉既有意思同时又很有启发性的例子。\par
+\subsection{开始}
+\indent 有用的awk程序通常都很短，有的甚至只有一到两行。假设你有一份称为emp.data的文件。它包含雇员名字，时新和雇员的工作时常，一条雇员记录单独成行，如下所示：\\
+\indent Beth 4.00 0\\
+\indent Dan  3.75 0\\
+\indent Kathy 4.00 10\\
+\indent Mark 5.00 20\\
+\indent Mary 5.50 22\\
+\indent Susie 4.25 18\\
+现在你想打印所有那些工作时间超过零小时的雇员名称和个人所得。awk天生擅长这类工作，对awk来说，这太容易了。只需敲入以下命令行：\\
+awk `\$3 \$>\$ 0 \{ print \$1 , \$2  *  \$3  \}' emp.data \\
+你应该得到如下输出：\\
+\indent Kathy   40\\
+\indent Mark    100\\
+\indent Mary    110\\
+\indent Susie   76.5\\
+\indent 这条命令告诉系统使用awk来执行单引号内的程序，并从输入文件emp.data中获取处理数据。单引号中的内容是一条完整的awk程序。它由单条pattern-action语句构成。\\
+pattern--\$3 > 0，用于匹配每一输入行的第三列或字段是否大于0，对应的action--\{ print \$1 , \$2 * \$3  \}打印匹配行的第一列和第二列与第三列的乘积。\\
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
